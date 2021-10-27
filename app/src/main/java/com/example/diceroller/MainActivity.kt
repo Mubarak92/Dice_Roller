@@ -3,6 +3,7 @@ package com.example.diceroller
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -12,15 +13,22 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
+            val text = "${rollDice()}"
+            val duration = Toast.LENGTH_SHORT
+
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
             rollDice()
         }
     }
 
     private fun rollDice() {
         // here we created object dice with possibility of 6 numbers
-            val dice = Dice(6)
-            val diceRoll = dice.roll()
-            val diceImage: ImageView = findViewById(R.id.imageView)
+        val dice = Dice(6)
+        val diceRoll = dice.roll()
+        val diceRoll2 = dice.roll()
+        val diceImage: ImageView = findViewById(R.id.imageView)
+        val diceImage2: ImageView = findViewById(R.id.imageView2)
 //        when (diceRoll) {
 //            1 -> diceImage.setImageResource(R.drawable.dice_1)
 //            2 -> diceImage.setImageResource(R.drawable.dice_2)
@@ -29,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 //            5 -> diceImage.setImageResource(R.drawable.dice_5)
 //            6 -> diceImage.setImageResource(R.drawable.dice_6)
 //        }
-        val drawableResource = when (diceRoll) {
+        val drawableResource1 = when (diceRoll) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -37,10 +45,20 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
+        val drawableResource2 = when (diceRoll2) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage2.setImageResource(drawableResource1)
 
-        diceImage.setImageResource(drawableResource)
-        }
-        }
+        diceImage.setImageResource(drawableResource2)
+    }
+
+}
 
 
 class Dice(private val numSides: Int) {
