@@ -13,11 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
-            val text = "${rollDice()}"
-            val duration = Toast.LENGTH_SHORT
 
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show()
             rollDice()
         }
     }
@@ -29,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         val diceRoll2 = dice.roll()
         val diceImage: ImageView = findViewById(R.id.imageView)
         val diceImage2: ImageView = findViewById(R.id.imageView2)
+        val text = "${diceRoll + diceRoll2}"
+        val duration = Toast.LENGTH_SHORT
+
+
+        val toast = Toast.makeText(applicationContext, text, duration)
+        toast.show()
+
 //        when (diceRoll) {
 //            1 -> diceImage.setImageResource(R.drawable.dice_1)
 //            2 -> diceImage.setImageResource(R.drawable.dice_2)
