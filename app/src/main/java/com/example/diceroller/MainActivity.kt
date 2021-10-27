@@ -1,5 +1,6 @@
 package com.example.diceroller
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun rollDice() {
+     private fun rollDice() {
         // here we created object dice with possibility of 6 numbers
         val dice = Dice(6)
         val diceRoll = dice.roll()
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         val text = "${diceRoll + diceRoll2}"
         val duration = Toast.LENGTH_SHORT
 
-
+         var sound1= MediaPlayer.create(applicationContext,R.raw.dice)
+         sound1?.start()
         val toast = Toast.makeText(applicationContext, text, duration)
         toast.show()
 
